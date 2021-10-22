@@ -34,22 +34,12 @@ public class OptionService {
 	        return repository.findById(id).orElse(null);
 	    }
 
-//	    public Question getProductByName(String name) {
-//	        return repository.findByName(name);
-//	    }
 
 	    public String deleteQuestion(int id) {
 	        repository.deleteById(id);
 	        return "question removed !! " + id;
 	    }
 
-//	    public Question updateProduct(Question product) {
-//	        Question existingProduct = repository.findById(product.getId()).orElse(null);
-//	        existingProduct.setName(product.getName());
-//	        existingProduct.setQuantity(product.getQuantity());
-//	        existingProduct.setPrice(product.getPrice());
-//	        return repository.save(existingProduct);
-//	    }
 
 
 	}
