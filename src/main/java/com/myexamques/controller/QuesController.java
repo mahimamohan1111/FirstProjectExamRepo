@@ -21,14 +21,8 @@ public class QuesController {
     private OptionService serviceOpt;
 
 
-    @PostMapping("/addquestion2")
+    @PostMapping("/addquestion")
     public Question addQuestion2(@RequestBody RequestObject exam) {
-    	System.out.println("WHy???");
-//    	Question question=exam.getQuestion();
-//    	List<Option> op=question.getOptions();
-//    	System.out.println(op.toString());
-//    	
-//    	serviceOpt.saveOptions(op);
         return service.saveQuestion(exam.getQuestion());
     }
 
@@ -51,24 +45,15 @@ public class QuesController {
         return service.getQuestionById(id);
     }
 
-//    @GetMapping("/product/{name}")
-//    public Question findProductByName(@PathVariable String name) {
-//        return service.getProductByName(name);
-//    }
-
-//    @PutMapping("/update")
-//    public Question updateProduct(@RequestBody Question product) {
-//        return service.updateProduct(product);
-//    }
-
     @DeleteMapping("/delete/{id}")
     public String deleteQuestion(@PathVariable int id) {
         return service.deleteQuestion(id);
     }
+    
     @RequestMapping("/")
     @ResponseBody
     public String welcome() {
     	System.out.println("First Request");
-        return "Welcome to RestTemplate Example.";
+        return "Welcome to My First REST API Example.";
     }
 }
