@@ -1,0 +1,20 @@
+
+{
+  "question": 
+  {
+"quesstr":"my question is this",
+"questopic":"my answer is this",
+"options":[
+  {
+    "optid":1,
+    "opta":"option a is this",
+    "answerstr":"this is the answer"
+  },
+    {
+    "optid":2,
+    "opta":"option B is this",
+    "answerstr":"this is the answer"
+  }
+  ]
+  }
+}
