@@ -1,25 +1,29 @@
 package com.myexamques.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.myexamques.entity.Question;
 import com.myexamques.service.QuestionService;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
 @RequestMapping(value = "/questions")
+@Slf4j
 public class QuesController {
 
 	@Autowired
 	private QuestionService service;
-
-	Logger logger=LoggerFactory.getLogger(QuesController.class);
 
 	@PostMapping("")
 	public List<Question> addQuestions(@RequestBody List<Question> question) {
@@ -28,14 +32,14 @@ public class QuesController {
 
 	@GetMapping("")
 	public List<Question> findAllQuestions() {
-    logger.debug("IS it reaching here?");
+    log.debug("IS it reaching here?");
 		return service.getQuestions();
 	}
 
 	@GetMapping("/{id}")
 	public Question findQuestionById(@PathVariable int id) {
-		logger.debug("My ID is: {}", id);
-		logger.debug("getQuestionById response: {}", service.getQuestionById(id));
+		log.debug("My ID is: {}", id);
+		log.debug("getQuestionById response: {}", service.getQuestionById(id));
 		return service.getQuestionById(id);
 	}
 
@@ -44,10 +48,4 @@ public class QuesController {
 		return service.deleteQuestion(id);
 	}
 
-	// @RequestMapping("/")
-	// @ResponseBody
-	// public String welcome() {
-	// 	logger.debug("First Request");
-	// 	return "Welcome to My First REST API Example.";
-	// }
 }
