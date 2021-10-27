@@ -23,12 +23,12 @@ public class QuestionService {
 
     public List<Question> getQuestions() {
     	System.out.println("reading from service");
-        return repository.findAll();
+      return repository.findAll();
     }
 
     public Question getQuestionById(int id) {
     	System.out.println("Getting Ques By ID "+id);
-        return repository.findById(id).orElse(null);
+      return repository.findById(id).orElse(null);
     }
 
 //    public Question getProductByName(String name) {

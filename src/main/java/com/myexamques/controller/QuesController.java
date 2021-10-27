@@ -1,6 +1,5 @@
 package com.myexamques.controller;
 
-import com.myexamques.entity.RequestObject;
 import com.myexamques.entity.Question;
 import com.myexamques.service.QuestionService;
 
@@ -14,50 +13,41 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping(value = "/questions")
 public class QuesController {
 
 	@Autowired
 	private QuestionService service;
 
-
-
 	Logger logger=LoggerFactory.getLogger(QuesController.class);
-	
 
-	@PostMapping("/addquestion")
-	public Question addQuestion2(@RequestBody RequestObject exam) {
-		logger.error("No Error!");
-		return service.saveQuestion(exam.getQuestion());
-	}
-
-
-	@PostMapping("/addquestions")
+	@PostMapping("")
 	public List<Question> addQuestions(@RequestBody List<Question> question) {
 		return service.saveQuestions(question);
 	}
 
-	@GetMapping("/questions")
+	@GetMapping("")
 	public List<Question> findAllQuestions() {
-	logger.debug("IS it reaching here?");
+    logger.debug("IS it reaching here?");
 		return service.getQuestions();
 	}
 
-	@GetMapping("/questionById/{id}")
+	@GetMapping("/{id}")
 	public Question findQuestionById(@PathVariable int id) {
-		logger.debug("My ID is:"+id);
-		logger.debug(" "+service.getQuestionById(id));
+		logger.debug("My ID is: {}", id);
+		logger.debug("getQuestionById response: {}", service.getQuestionById(id));
 		return service.getQuestionById(id);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public String deleteQuestion(@PathVariable int id) {
 		return service.deleteQuestion(id);
 	}
 
-	@RequestMapping("/")
-	@ResponseBody
-	public String welcome() {
-		logger.debug("First Request");
-		return "Welcome to My First REST API Example.";
-	}
+	// @RequestMapping("/")
+	// @ResponseBody
+	// public String welcome() {
+	// 	logger.debug("First Request");
+	// 	return "Welcome to My First REST API Example.";
+	// }
 }
